@@ -1,0 +1,35 @@
+#include <iostream>
+#include <windows.h>
+#include <math.h>
+
+using namespace std;
+
+void proverka(double& a) {
+	while (!(cin >> a) || cin.get() != '\n') {
+		cin.clear();
+		cin.ignore(4923849, '\n');
+	}
+}
+
+void znak(double x) {
+	if (x > 0) {
+		cout << "Знак -> 1" << endl;
+	}
+	else if (x < 0) {
+		cout << "Знак -> -1" << endl;
+	}
+	else {
+		cout << "Знак -> 0" << endl;
+	}
+}
+
+void main() {
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	cout << "Введите число: ";
+	double x;
+	proverka(x);
+	znak(x);
+	cout << endl;
+	cout << znak;
+}
