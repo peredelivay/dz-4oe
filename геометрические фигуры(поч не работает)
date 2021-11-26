@@ -1,0 +1,69 @@
+#include <iostream>
+#include <windows.h>
+#include <math.h>
+
+using namespace std;
+
+void proverka(double& ab) {
+	while (!(cin >> ab) || cin.get() != '\n') {
+		cout << "Введите числовое значение переменной:..." << endl;
+		cin.clear();
+		cin.ignore(13214123, '\n');
+	}
+}
+
+void logic(double& ba) {
+	while (ba < 0) {
+		cin.clear();
+		cout << "Введите корректное значение переменной: ";
+		proverka(ba);
+	}
+}
+
+void pryamo() {
+	cout << "Вычислить площадь прямоугольника. " << endl;
+	double m, n;
+	cout << "Введите значение ширины прямоугольника: ";
+	proverka(m);
+	logic(m);
+	cout << "Введите значение высоты прямоугольника: ";
+	proverka(n);
+	logic(n);
+	cout << "Площадь прямоугольника = " << m * n << endl;
+}
+
+void treyg() {
+	cout << "Вычислить площадь треугольника." << endl;
+	double a, b, c;
+	cout << "Введите значение первой стороны треугольника: ";
+	proverka(a);
+	logic(a);
+	cout << "Введите значение второй стороны треугольника: ";
+	proverka(b);
+	logic(b);
+	cout << "Введите значение третьей стороны треугольника: ";
+	proverka(c);
+	logic(c);
+	while (a + b < c || c + a < b || b + c < a) {
+		cout << "Некорректно заданы данные (Такой треугольник не может существовать)...";
+	}
+	double p = (a + b + c) / 2;
+	cout << "Площадь треугольника = " << sqrt(p * (p - a) * (p - b) * (p - c))<< endl;
+}
+
+void krug() {
+	double Pi = 3.14, r;
+	cout << "Вычислить площадь треугольника." << endl;
+	cout << "Введите значение радиуса треугольника: ";
+	proverka(r);
+	logic(r);
+	cout << "Площадь круга = " << Pi * pow(r, 2);
+}
+
+void main() {
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	void pryamo();
+	void treyg();
+	void krug();
+}
