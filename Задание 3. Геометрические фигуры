@@ -16,7 +16,7 @@ void logic(double& ba) {
 	while (ba < 0) {
 		cin.clear();
 		cout << "Введите корректное значение переменной: ";
-		proverka(ba);
+
 	}
 }
 
@@ -48,7 +48,7 @@ void treyg() {
 		cout << "Некорректно заданы данные (Такой треугольник не может существовать)...";
 	}
 	double p = (a + b + c) / 2;
-	cout << "Площадь треугольника = " << sqrt(p * (p - a) * (p - b) * (p - c))<< endl;
+	cout << "Площадь треугольника = " << sqrt(p * (p - a) * (p - b) * (p - c)) << endl;
 }
 
 void krug() {
@@ -63,7 +63,10 @@ void krug() {
 void main() {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-	void pryamo();
-	void treyg();
-	void krug();
+	pryamo();
+	cout << '\n';
+	treyg();
+	cout << '\n';
+	krug();
+	cout << '\n';
 }
