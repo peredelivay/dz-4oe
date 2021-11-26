@@ -1,0 +1,33 @@
+#include <iostream>
+#include <windows.h>
+
+using namespace std;
+
+void proverka(int& a) {
+	while (!(cin >> a) || cin.get() != '\n') {
+		cin.clear();
+		cin.ignore(12314924, '\n');
+	}
+}
+
+void main() {
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	int m, i, s0, c;
+	cout << "Введите значение переменной m: ";
+	proverka(m);
+	cout << "Введите значение переменной i: ";
+	proverka(i);
+	cout << "Введите значение переменной c: ";
+	proverka(c);
+	cout << "Введите значение переменной x0: ";
+	proverka(s0);
+	int* rand = new int[i];
+	rand[0] = s0;
+	for (int x = 0; x < i; x++) {
+		rand[x + 1] = ((m * rand[x] + i) % c);
+	}
+	for (int x = 0; x < i; x++) {
+		cout << endl <<  rand[x];
+	}
+}
