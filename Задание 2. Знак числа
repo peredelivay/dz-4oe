@@ -11,7 +11,7 @@ void proverka(double& a) {
 	}
 }
 
-void znak(double x) {
+int znak(double x) {
 	if (x > 0) {
 		cout << "Знак -> 1" << endl;
 	}
@@ -21,6 +21,7 @@ void znak(double x) {
 	else {
 		cout << "Знак -> 0" << endl;
 	}
+	return x;
 }
 
 void main() {
