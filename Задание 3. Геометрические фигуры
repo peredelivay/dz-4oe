@@ -20,7 +20,7 @@ void logic(double& ba) {
 	}
 }
 
-void pryamo() {
+double pryamo() {
 	cout << "Вычислить площадь прямоугольника. " << endl;
 	double m, n;
 	cout << "Введите значение ширины прямоугольника: ";
@@ -30,11 +30,12 @@ void pryamo() {
 	proverka(n);
 	logic(n);
 	cout << "Площадь прямоугольника = " << m * n << endl;
+	return n * m;
 }
 
-void treyg() {
+double treyg() {
 	cout << "Вычислить площадь треугольника." << endl;
-	double a, b, c;
+	double a, b, c, S;
 	cout << "Введите значение первой стороны треугольника: ";
 	proverka(a);
 	logic(a);
@@ -44,20 +45,25 @@ void treyg() {
 	cout << "Введите значение третьей стороны треугольника: ";
 	proverka(c);
 	logic(c);
-	while (a + b < c || c + a < b || b + c < a) {
-		cout << "Некорректно заданы данные (Такой треугольник не может существовать)...";
+	if (a + b < c || c + a < b || b + c < a) {
+		cout << "Некорректно заданы данные (Такой треугольник не может существовать)...\n"<< endl;
 	}
-	double p = (a + b + c) / 2;
-	cout << "Площадь треугольника = " << sqrt(p * (p - a) * (p - b) * (p - c)) << endl;
+	else {
+		double P = (a + b + c) / 2;
+		S = sqrt(P * (P - a) * (P - b) * (P - c));
+		cout << "Площадь треугольника = " << S << endl;
+	}
+	return S;
 }
 
-void krug() {
+double krug() {
 	double Pi = 3.14, r;
-	cout << "Вычислить площадь треугольника." << endl;
-	cout << "Введите значение радиуса треугольника: ";
+	cout << "Вычислить площадь круга." << endl;
+	cout << "Введите значение радиуса круга: ";
 	proverka(r);
 	logic(r);
 	cout << "Площадь круга = " << Pi * pow(r, 2);
+	return Pi * pow(r, 2);
 }
 
 void main() {
