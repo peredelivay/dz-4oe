@@ -1,0 +1,44 @@
+#include <iostream>
+#include <fstream>
+#include <windows.h>
+#include <string>
+using namespace std;
+
+void main()
+{	
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+
+	string name;
+	int sum = 0, n = 10, v;
+
+	cout << "Введите название файл: ";
+	getline(cin, name);
+	name = name + ".txt";
+
+	ofstream fout(name);
+
+	// записали в файл
+
+	cout << "Введите числа, которые хотите записать в файл: (Через enter) \n";
+	for (int i = 1; i <= n; i++)
+	{
+		cin >> v;
+		fout << v << "\n";
+	}
+
+	fout.close();
+	
+
+
+	ifstream fin(name);
+
+	// прочитали из файла
+
+	for (int i = 1; i <= n; i++)
+	{
+		fin >> v;
+		sum += v;
+	}
+	cout << endl << "Сумма чисел = " << sum;
+}
