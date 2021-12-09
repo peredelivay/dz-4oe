@@ -1,0 +1,36 @@
+#include <iostream>
+#include <string>
+#include <windows.h>
+#include <iomanip>
+using namespace std;
+
+void main()
+{
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	cout << "Былая слава: " << endl << endl;
+	for (int i = 0; i < 13; i++)
+	{
+		if (i < 6)
+		{
+			for (int m = 0; m < 8; m++)
+			{
+				cout << "* ";
+			}
+			for (int m = 9; m < 24; m++)
+			{
+				cout << "=";
+			}
+			cout << "\n";
+		}
+
+		else
+		{
+			for (int h = 0; h < 31; h++)
+			{
+				cout << "=";
+			}
+			cout << "\n";
+		}
+	}
+}
