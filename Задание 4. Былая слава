@@ -17,7 +17,7 @@ void main()
 			{
 				cout << "* ";
 			}
-			for (int m = 9; m < 24; m++)
+			for (int m = 9; m < 30; m++)
 			{
 				cout << "=";
 			}
@@ -26,7 +26,7 @@ void main()
 
 		else
 		{
-			for (int h = 0; h < 31; h++)
+			for (int h = 0; h < 37; h++)
 			{
 				cout << "=";
 			}
