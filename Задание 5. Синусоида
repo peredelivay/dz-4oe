@@ -1,0 +1,55 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+	string m[31][51];
+
+	for (int i = 0; i < 31; i++) //ЗАДАЕМ МАТРИЦУ
+	{
+		for (int j = 0; j < 51; j++) 
+		{
+			m[i][j] = " ";
+		}
+	}
+
+	for (int i = 0; i < 51; i++)  //ЗАДАЕМ ОСЬ Х
+	{
+		m[15][i] = "-";
+	}
+	for (int i = 0; i < 31; i++) //ЗАДАЕМ ОСЬ У
+	{
+		m[i][25] = "|";
+	}
+
+	m[15][25] = "О"; //ЗАДАЕМ НАЧАЛО КООРДИНАТ
+	 
+	for (int i = 0; i < 51; i++)
+	{
+		for (int k = 0; k < 1; k++) //РИСУЕМ ГРАФИК
+		{
+			int j = abs(sin(i / 3.99) * 10);
+			if (sin(i/3.99) < 0)
+			{
+				j += 15 + k;
+			}
+			else
+			{
+				j = 15 - j - k;
+			}
+			m[j][i] = "*";
+
+		}
+	}
+
+	for (int i = 0; i < 31; i++)
+	{
+		for (int j = 0; j < 51; j++) 
+		{
+			cout << m[i][j] << " ";
+		}
+		cout << "\n";
+	}
+
+	return 0;
+}
