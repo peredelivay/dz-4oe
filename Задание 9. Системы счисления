@@ -1,0 +1,98 @@
+#include <iostream>
+#include <windows.h>
+#include <string>
+using namespace std;
+
+char cifr(int num) {
+	switch (num) {
+	case 0: return '0';
+	case 1: return '1';
+	case 2: return '2';
+	case 3: return '3';
+	case 4: return '4';
+	case 5: return '5';
+	case 6: return '6';
+	case 7: return '7';
+	case 8: return '8';
+	case 9: return '9';
+	case 10: return 'A';
+	case 11: return 'B';
+	case 12: return 'C';
+	case 13: return 'D';
+	case 14: return 'E';
+	case 15: return 'F';
+	}
+}
+
+int bukvi(int num2) {
+	switch (num2) {
+	case '0': return 0;
+	case '1': return 1;
+	case '2': return 2;
+	case '3': return 3;
+	case '4': return 4;
+	case '5': return 5;
+	case '6': return 6;
+	case '7': return 7;
+	case '8': return 8;
+	case '9': return 9;
+	case 'A': return 10;
+	case 'B': return 11;
+	case 'C': return 12;
+	case 'D': return 13;
+	case 'E': return 14;
+	case 'F': return 15;
+	}
+}
+
+int perevodnachalo(string chislo, int sis) {
+	int res = 0, res1, i = 1;
+	char chislo1[100] = { 0 };
+	for (int k = 0; k < chislo.length() ; k++)
+	{
+		chislo1[k] = chislo[k];
+		if (bukvi(chislo1[k]) >= sis) {
+			cout << "Невозможные исход...\n";
+			break;
+		}
+		else {
+			res1 = bukvi(chislo1[k]) * pow(sis, chislo.length() - i);
+			i++;
+			chislo1[k] = 0;
+			res += res1;
+		}
+	}
+	return res;
+}
+
+int perevodfinal(int a, int p, char* s) {
+	int num = a;
+	int osnova = num % p;
+	num = num / p;
+	if (num == 0) 
+	{
+		s[0] = cifr(osnova);
+		return 1;
+	}
+	int k = perevodfinal(num, p, s);
+	s[k++] = cifr(osnova);
+	return k;
+}
+
+void main() {
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	string chislo;
+	int a, p, k, sis;
+	char s[100] = { 0 };
+	cout << "Введите число для перевода: ";
+	cin >> chislo;
+	cout << "Введите исходную систему счисления: ";
+	cin >> sis;
+	cout << "Введите систему счисления в которую хотите перевести число: ";
+	cin >> p;
+	a = perevodnachalo(chislo, sis);
+	k = perevodfinal(a, p, s);
+	cout << s;
+
+}
