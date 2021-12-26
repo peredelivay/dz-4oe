@@ -15,18 +15,18 @@ int fromRoman(string n)
 	m['D'] = 500;
 	m['M'] = 1000;
 
-	int tmp = 0, res = 0, i = 1;
+	int tmp = 0, res = 0, i = 1, s = 0;
 
 	for (char c : n)
 	{
 		int n = m[c];
-		if (n < tmp)
+		if (n < tmp && s < 1)
 		{
 			res += tmp;
 			tmp = n;
 			i = 1;
 		}
-		else if (n > tmp)
+		else if (n > tmp && s < 1)
 		{
 			if (tmp == 0)
 				tmp = n;
@@ -35,17 +35,29 @@ int fromRoman(string n)
 				res += n - tmp;
 				tmp = 0;
 				i = 1;
+				s += 1;
 			}
 		}
-		else if (n == tmp)
+		else if (n == tmp && s < 1)
 		{
-			res += tmp + n;
-			tmp = 0;
-			i += 1;
+			if (n == 5 || n ==  50 || n == 500) {
+				res += tmp + n;
+				tmp = 0;
+				i += 3;
+			}
+			else {
+				res += tmp + n;
+				tmp = 0;
+				i += 1;
+			}
+		}
+		else {
+			cout << "Неверный тип записи..." << endl;
+			system("pause");
 		}
 	}
 	if (i > 2) {
-		cout <<"Неверно..." << endl;
+		cout <<"Неверный тип записи..." << endl;
 		system("pause");
 	}
 	else {
@@ -60,5 +72,5 @@ int main()
 	string name;
 	cout << "Введите римское число: ";
 	cin >> name;
-	cout << fromRoman(name)<< endl;
+	cout << "Ваше арабское число: " << fromRoman(name) << endl;
 }
